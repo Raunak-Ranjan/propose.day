@@ -1,0 +1,212 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f0c29;
+color:white;
+text-align:center;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+/* Stars */
+.stars{
+position:fixed;
+inset:0;
+pointer-events:none;
+}
+.star{
+position:absolute;
+width:2px;
+height:2px;
+background:white;
+opacity:.8;
+}
+
+/* Lock Screen */
+#lockScreen{
+position:fixed;
+inset:0;
+background:#0f0c29;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:15px;
+z-index:10;
+}
+#lockScreen input{
+width:250px;
+padding:12px;
+border-radius:25px;
+border:none;
+text-align:center;
+}
+#lockScreen button{
+padding:12px 25px;
+border-radius:25px;
+border:none;
+background:#ff6fae;
+color:white;
+cursor:pointer;
+}
+
+/* Main */
+#mainContent{display:none;}
+section{padding:80px 20px;}
+
+/* Shimmer */
+.shimmer{
+background:linear-gradient(90deg,#ff6fae,#fff,#ff6fae);
+background-size:200%;
+color:transparent;
+background-clip:text;
+-webkit-background-clip:text;
+animation:shimmer 3s linear infinite;
+}
+@keyframes shimmer{
+from{background-position:0%;}
+to{background-position:200%;}
+}
+
+/* Wish */
+.wish{
+font-size:1.4rem;
+margin-bottom:15px;
+color:#ffe3ef;
+}
+
+/* Hearts */
+.heart-cluster{
+font-size:2.5rem;
+margin:60px 0;
+letter-spacing:15px;
+animation:float 3s ease-in-out infinite alternate;
+}
+@keyframes float{
+from{transform:translateY(0);}
+to{transform:translateY(-20px);}
+}
+
+/* Polaroids */
+.polaroid-stack{
+position:relative;
+width:320px;
+height:260px;
+margin:50px auto;
+}
+.polaroid{
+position:absolute;
+width:190px;
+background:white;
+padding:10px 10px 28px;
+border-radius:6px;
+box-shadow:0 12px 30px rgba(0,0,0,0.4);
+transition:.3s;
+}
+.polaroid img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:4px;
+}
+.polaroid span{
+display:block;
+margin-top:8px;
+color:#444;
+font-weight:600;
+}
+.p1{left:0;top:35px;transform:rotate(-10deg);z-index:1;}
+.p2{left:65px;top:0;transform:rotate(0deg);z-index:3;}
+.p3{left:130px;top:40px;transform:rotate(8deg);z-index:2;}
+.polaroid:hover{transform:scale(1.05);z-index:5;}
+
+/* Quote */
+.center-card{
+max-width:500px;
+margin:40px auto;
+background:rgba(255,255,255,0.15);
+padding:25px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(255,105,180,0.4);
+}
+
+/* Divider */
+.divider{
+width:120px;
+height:3px;
+margin:40px auto;
+background:linear-gradient(90deg,#ff6fae,#fff,#ff6fae);
+border-radius:50px;
+}
+
+/* Cards */
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+gap:15px;
+padding:0 20px;
+}
+.cards div{
+background:rgba(255,255,255,0.1);
+padding:20px;
+border-radius:15px;
+}
+
+/* Ring */
+#ring{
+font-size:90px;
+animation:ringPop 1.2s infinite alternate;
+}
+@keyframes ringPop{
+from{transform:scale(1);}
+to{transform:scale(1.3);}
+}
+
+/* Final */
+#finalMessage{display:none;margin-top:30px;}
+.choice{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:20px;
+}
+.choice button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+}
+
+/* Glow */
+body.glow{
+animation:pinkGlow 1s infinite alternate;
+}
+@keyframes pinkGlow{
+from{background:#0f0c29;}
+to{background:#ff6fae;}
+}
+
+/* Confetti */
+.confetti{
+position:fixed;
+top:-20px;
+font-size:20px;
+animation:fall 3s linear forwards;
+}
+@keyframes fall{
+to{transform:translateY(110vh);}
+}
+
+/* Hearts rain */
+.heart{
+position:fixed;
+top:-20px;
+font-size:22px;
+animation:fall 4s linear forwards;
+}
