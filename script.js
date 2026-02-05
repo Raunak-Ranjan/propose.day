@@ -49,7 +49,7 @@ shareBtn.onclick=()=>{
 if(navigator.share){
 navigator.share({
 title:"Propose Day Surprise",
-text:"Someone made something special for you ❤️",
+text:"Dino🦕 made something special for you ❤️",
 url:window.location.href
 });
 }else{
