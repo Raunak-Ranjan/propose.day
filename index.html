@@ -9,15 +9,21 @@
 
 <body>
 
-<!-- Music -->
+<!-- 🎵 MUSIC -->
 <audio id="bgMusic" loop>
   <source src="romantic.mp3" type="audio/mp3">
 </audio>
 
-<!-- Stars -->
+<!-- 🔘 TOP CONTROLS -->
+<div id="topControls">
+  <button id="musicBtn">🔊</button>
+  <button id="shareBtn">🔗</button>
+</div>
+
+<!-- ⭐ STARS -->
 <div class="stars"></div>
 
-<!-- Lock Screen -->
+<!-- 🔐 LOCK SCREEN -->
 <div id="lockScreen">
   <h1 class="shimmer">Enter The Secret Password 💖</h1>
   <input id="passwordInput" type="password" placeholder="Enter password">
@@ -27,19 +33,17 @@
   <p id="errorText"></p>
 </div>
 
-<!-- Main Content -->
+<!-- ❤️ MAIN CONTENT -->
 <div id="mainContent">
 
-<section>
+<section class="fade">
 
 <h3 class="wish">💖 Happy Propose Day Cutie 🩷 💖</h3>
 
 <h1 class="shimmer">This Is For You</h1>
 <p>On this Propose Day, I want you to know...</p>
 
-<div class="heart-cluster">
-❤️ 💗 💕 💞 💖 💘 💝
-</div>
+<div class="heart-cluster">❤️ 💗 💕 💞 💖 💘 💝</div>
 
 <div class="polaroid-stack">
   <div class="polaroid p1">
@@ -65,18 +69,19 @@ you are my life itself ❤️
 
 </section>
 
-<section>
+<section class="fade">
 <p id="typeText"></p>
 </section>
 
-<section class="cards">
+<section class="cards fade">
 <div>You make me smile</div>
 <div>You understand me</div>
 <div>You are my safe place</div>
 <div>You are my forever</div>
 </section>
 
-<section>
+<section class="fade">
+
 <button id="revealBtn">Open My Question 💍</button>
 <div id="countdown"></div>
 
@@ -91,6 +96,7 @@ you are my life itself ❤️
 </div>
 
 </div>
+
 </section>
 
 </div>
