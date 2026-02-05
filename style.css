@@ -130,10 +130,12 @@ to{transform:translateY(-15px);}
 /* Polaroids */
 .polaroid-stack{
 position:relative;
-width:320px;
-height:260px;
-margin:50px auto;
+width:360px;
+height:320px;
+margin:60px auto;
+overflow:visible;
 }
+
 
 .polaroid{
 position:absolute;
@@ -159,9 +161,26 @@ display:block;
 margin-top:8px;
 }
 
-.p1{left:0;top:35px;transform:rotate(-10deg);}
-.p2{left:65px;top:0;transform:rotate(0);z-index:3;}
-.p3{left:130px;top:40px;transform:rotate(8deg);}
+.p1{
+left:0;
+top:70px;
+transform:rotate(-10deg);
+z-index:1;
+}
+
+.p2{
+left:90px;
+top:0;
+transform:rotate(0deg);
+z-index:3;
+}
+
+.p3{
+left:180px;
+top:80px;
+transform:rotate(10deg);
+z-index:2;
+}
 
 .center-card{
 max-width:500px;
@@ -267,4 +286,10 @@ position:fixed;
 top:-20px;
 font-size:22px;
 animation:fall 4s linear forwards;
+}
+
+@media(max-width:600px){
+  .polaroid-stack{
+    transform:scale(0.9);
+  }
 }
