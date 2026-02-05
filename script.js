@@ -1,4 +1,4 @@
-/* ⭐ Stars */
+// Stars
 const stars=document.querySelector(".stars");
 for(let i=0;i<120;i++){
 const s=document.createElement("div");
@@ -8,11 +8,11 @@ s.style.top=Math.random()*100+"vh";
 stars.appendChild(s);
 }
 
-/* 🎵 Music */
+// Music
 const bgMusic=document.getElementById("bgMusic");
 const musicBtn=document.getElementById("musicBtn");
 
-/* 🔐 Password */
+// Password
 const correctPassword="forever";
 const lockScreen=document.getElementById("lockScreen");
 const mainContent=document.getElementById("mainContent");
@@ -24,7 +24,7 @@ unlockBtn.onclick=()=>{
 if(passwordInput.value===correctPassword){
 lockScreen.style.display="none";
 mainContent.style.display="block";
-bgMusic.volume=0.75;
+bgMusic.volume=0.50;
 bgMusic.play();
 musicBtn.innerText="🔊";
 }else{
@@ -32,7 +32,7 @@ errorText.innerText="Wrong password ❤️";
 }
 };
 
-/* 🔊 Music Toggle */
+// Music Toggle
 musicBtn.onclick=()=>{
 if(bgMusic.paused){
 bgMusic.play();
@@ -43,29 +43,28 @@ musicBtn.innerText="🔇";
 }
 };
 
-/* 🔗 Share Button */
-const shareBtn=document.getElementById("shareBtn");
-shareBtn.onclick=()=>{
+// Share
+document.getElementById("shareBtn").onclick=()=>{
 if(navigator.share){
 navigator.share({
 title:"Propose Day Surprise",
-text:"Dino🦕 made something special for you ❤️",
-url:window.location.href
+text:"Someone made something special for you ❤️",
+url:location.href
 });
 }else{
-alert("Sharing not supported on this device");
+alert("Sharing not supported");
 }
 };
 
-/* 💡 Hints */
+// Hints
 const hints=["Something that never ends","Not a number","Always ♾️"];
 let h=0;
 document.getElementById("hintBtn").onclick=()=>{
-document.getElementById("hintText").innerText=hints[h] || "You know it 😉";
+document.getElementById("hintText").innerText=hints[h]||"You know it 😉";
 h++;
 };
 
-/* ⌨️ Typewriter */
+// Typewriter
 const text=`From the day you came into my life,
 everything changed.
 
@@ -87,7 +86,7 @@ setTimeout(typeWriter,45);
 }
 typeWriter();
 
-/* ⏳ Countdown */
+// Countdown
 const revealBtn=document.getElementById("revealBtn");
 const countdown=document.getElementById("countdown");
 const finalMessage=document.getElementById("finalMessage");
@@ -107,37 +106,70 @@ finalMessage.style.display="block";
 },1000);
 };
 
-/* 😈 No Button Escape */
+// NO button
 const noBtn=document.getElementById("noBtn");
 noBtn.onmouseover=()=>{
 noBtn.style.position="absolute";
-noBtn.style.left=Math.random()*80+"%";
-noBtn.style.top=Math.random()*80+"%";
+noBtn.style.left=Math.random()*70+"%";
+noBtn.style.top=Math.random()*70+"%";
 };
 
-/* ✨ Fade-in on scroll */
+// YES button
+const yesBtn=document.getElementById("yesBtn");
+yesBtn.onclick=()=>{
+document.body.classList.add("glow");
+createConfetti();
+startHeartRain();
+alert("Cutie said YES 💍❤️");
+};
+
+// Confetti
+function createConfetti(){
+for(let i=0;i<60;i++){
+const c=document.createElement("div");
+c.className="confetti";
+c.innerText="🎉";
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+}
+
+// Heart rain
+function startHeartRain(){
+const rain=setInterval(()=>{
+const h=document.createElement("div");
+h.className="heart";
+h.innerText="💗";
+h.style.left=Math.random()*100+"vw";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),4000);
+},200);
+setTimeout(()=>clearInterval(rain),6000);
+}
+
+// Fade on scroll
 const faders=document.querySelectorAll(".fade");
-function revealOnScroll(){
+function reveal(){
 faders.forEach(el=>{
-const rect=el.getBoundingClientRect();
-if(rect.top < window.innerHeight-120){
+const r=el.getBoundingClientRect();
+if(r.top < window.innerHeight-120){
 el.classList.add("show");
 }
 });
 }
-window.addEventListener("scroll",revealOnScroll);
-revealOnScroll();
+window.addEventListener("scroll",reveal);
+reveal();
 
-/* 👆 Hide top buttons on scroll */
-let lastScroll=0;
+// Hide top controls on scroll
+let last=0;
 const topControls=document.getElementById("topControls");
-
 window.addEventListener("scroll",()=>{
-const current=window.scrollY;
-if(current>lastScroll){
+let cur=window.scrollY;
+if(cur>last){
 topControls.classList.add("hide");
 }else{
 topControls.classList.remove("hide");
 }
-lastScroll=current;
+last=cur;
 });
