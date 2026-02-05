@@ -1,4 +1,4 @@
-/* Stars */
+/* ⭐ Stars */
 const stars=document.querySelector(".stars");
 for(let i=0;i<120;i++){
 const s=document.createElement("div");
@@ -8,7 +8,11 @@ s.style.top=Math.random()*100+"vh";
 stars.appendChild(s);
 }
 
-/* Password */
+/* 🎵 Music */
+const bgMusic=document.getElementById("bgMusic");
+const musicBtn=document.getElementById("musicBtn");
+
+/* 🔐 Password */
 const correctPassword="forever";
 const lockScreen=document.getElementById("lockScreen");
 const mainContent=document.getElementById("mainContent");
@@ -16,41 +20,52 @@ const passwordInput=document.getElementById("passwordInput");
 const unlockBtn=document.getElementById("unlockBtn");
 const errorText=document.getElementById("errorText");
 
-const bgMusic = document.getElementById("bgMusic");
-
-unlockBtn.onclick = () => {
-
-  if(passwordInput.value === correctPassword){
-
-    lockScreen.style.display = "none";
-    mainContent.style.display = "block";
-
-    // 🎵 Set volume to 65%
-    bgMusic.volume = 0.65;
-
-    // ▶ Play music after unlock
-    bgMusic.play();
-
-  } else {
-    errorText.innerText = "Wrong password ❤️";
-  }
-
+unlockBtn.onclick=()=>{
+if(passwordInput.value===correctPassword){
+lockScreen.style.display="none";
+mainContent.style.display="block";
+bgMusic.volume=0.75;
+bgMusic.play();
+musicBtn.innerText="🔊";
+}else{
+errorText.innerText="Wrong password ❤️";
+}
 };
 
-/* Hints */
-const hints=[
-"Something that never ends",
-"Not a number",
-"It means always ♾️"
-];
-let hintIndex=0;
+/* 🔊 Music Toggle */
+musicBtn.onclick=()=>{
+if(bgMusic.paused){
+bgMusic.play();
+musicBtn.innerText="🔊";
+}else{
+bgMusic.pause();
+musicBtn.innerText="🔇";
+}
+};
+
+/* 🔗 Share Button */
+const shareBtn=document.getElementById("shareBtn");
+shareBtn.onclick=()=>{
+if(navigator.share){
+navigator.share({
+title:"Propose Day Surprise",
+text:"Someone made something special for you ❤️",
+url:window.location.href
+});
+}else{
+alert("Sharing not supported on this device");
+}
+};
+
+/* 💡 Hints */
+const hints=["Something that never ends","Not a number","Always ♾️"];
+let h=0;
 document.getElementById("hintBtn").onclick=()=>{
-document.getElementById("hintText").innerText=
-hints[hintIndex] || "You already know it 😉";
-hintIndex++;
+document.getElementById("hintText").innerText=hints[h] || "You know it 😉";
+h++;
 };
 
-/* Typewriter */
+/* ⌨️ Typewriter */
 const text=`From the day you came into my life,
 everything changed.
 
@@ -67,12 +82,12 @@ function typeWriter(){
 if(i<text.length){
 typeText.innerHTML+=text.charAt(i);
 i++;
-setTimeout(typeWriter,50);
+setTimeout(typeWriter,45);
 }
 }
 typeWriter();
 
-/* Countdown */
+/* ⏳ Countdown */
 const revealBtn=document.getElementById("revealBtn");
 const countdown=document.getElementById("countdown");
 const finalMessage=document.getElementById("finalMessage");
@@ -92,7 +107,7 @@ finalMessage.style.display="block";
 },1000);
 };
 
-/* No button run */
+/* 😈 No Button Escape */
 const noBtn=document.getElementById("noBtn");
 noBtn.onmouseover=()=>{
 noBtn.style.position="absolute";
@@ -100,39 +115,29 @@ noBtn.style.left=Math.random()*80+"%";
 noBtn.style.top=Math.random()*80+"%";
 };
 
-/* YES button */
-const yesBtn=document.getElementById("yesBtn");
-
-yesBtn.onclick=()=>{
-document.body.classList.add("glow");
-createConfetti();
-startHeartRain();
-alert("Cutie said YES 💍❤️");
-};
-
-/* Confetti */
-function createConfetti(){
-for(let i=0;i<60;i++){
-const c=document.createElement("div");
-c.className="confetti";
-c.innerText="🎉";
-c.style.left=Math.random()*100+"vw";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),3000);
+/* ✨ Fade-in on scroll */
+const faders=document.querySelectorAll(".fade");
+function revealOnScroll(){
+faders.forEach(el=>{
+const rect=el.getBoundingClientRect();
+if(rect.top < window.innerHeight-120){
+el.classList.add("show");
 }
+});
 }
+window.addEventListener("scroll",revealOnScroll);
+revealOnScroll();
 
-/* Heart rain */
-function startHeartRain(){
-const rain=setInterval(()=>{
-const h=document.createElement("div");
-h.className="heart";
-h.innerText="💗";
-h.style.left=Math.random()*100+"vw";
-document.body.appendChild(h);
-setTimeout(()=>h.remove(),4000);
-},200);
+/* 👆 Hide top buttons on scroll */
+let lastScroll=0;
+const topControls=document.getElementById("topControls");
 
-setTimeout(()=>clearInterval(rain),6000);
+window.addEventListener("scroll",()=>{
+const current=window.scrollY;
+if(current>lastScroll){
+topControls.classList.add("hide");
+}else{
+topControls.classList.remove("hide");
 }
-
+lastScroll=current;
+});
