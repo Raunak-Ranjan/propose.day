@@ -25,8 +25,8 @@ unlockBtn.onclick = () => {
     lockScreen.style.display = "none";
     mainContent.style.display = "block";
 
-    // 🎵 Set volume to 75%
-    bgMusic.volume = 0.75;
+    // 🎵 Set volume to 65%
+    bgMusic.volume = 0.65;
 
     // ▶ Play music after unlock
     bgMusic.play();
@@ -135,3 +135,4 @@ setTimeout(()=>h.remove(),4000);
 
 setTimeout(()=>clearInterval(rain),6000);
 }
+
